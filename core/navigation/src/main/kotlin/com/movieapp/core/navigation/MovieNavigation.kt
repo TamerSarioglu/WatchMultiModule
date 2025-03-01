@@ -1,12 +1,12 @@
 package com.movieapp.core.navigation
 
 sealed class MovieNavigation(val route: String) {
-    object Home : MovieNavigation("home")
-    object Popular : MovieNavigation("popular")
-    object TopRated : MovieNavigation("top_rated")
-    object MovieDetail : MovieNavigation("movie/{movieId}") {
+    data object Home : MovieNavigation("home")
+    data object Popular : MovieNavigation("popular")
+    data object TopRated : MovieNavigation("top_rated")
+    data object MovieDetail : MovieNavigation("movie/{movieId}") {
         fun createRoute(movieId: Int) = "movie/$movieId"
     }
-    object Search : MovieNavigation("search")
-    object Favorites : MovieNavigation("favorites")
+    data object Search : MovieNavigation("search")
+    data object Favorites : MovieNavigation("favorites")
 } 

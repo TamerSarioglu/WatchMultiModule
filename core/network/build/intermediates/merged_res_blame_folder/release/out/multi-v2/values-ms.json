@@ -1,0 +1,82 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.movieapp.core.network-merged_res-43:/values-ms/values-ms.xml",
+            "map": [
+                {
+                    "source": "/Users/tamersarioglu/.gradle/caches/8.10.2/transforms/cc0d9cc32725654ff9dbeefc05fea639/transformed/ui-1.0.1/res/values-ms/values-ms.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,195,279,375,458,541,628,713,779,846,918,984",
+                        "endColumns": "89,83,95,82,82,86,84,65,66,71,65,119",
+                        "endOffsets": "190,274,370,453,536,623,708,774,841,913,979,1099"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12,13,14,15,16,17,18,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "848,938,1022,1118,1201,1284,1371,1456,1522,1589,1762,1828",
+                        "endColumns": "89,83,95,82,82,86,84,65,66,71,65,119",
+                        "endOffsets": "933,1017,1113,1196,1279,1366,1451,1517,1584,1656,1823,1943"
+                    }
+                },
+                {
+                    "source": "/Users/tamersarioglu/.gradle/caches/8.10.2/transforms/d60edde32f5aea4d99957c4510a5b96c/transformed/core-1.12.0/res/values-ms/values-ms.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,150,252,349,459,565,683,798",
+                        "endColumns": "94,101,96,109,105,117,114,100",
+                        "endOffsets": "145,247,344,454,560,678,793,894"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,19",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,200,302,399,509,615,733,1661",
+                        "endColumns": "94,101,96,109,105,117,114,100",
+                        "endOffsets": "195,297,394,504,610,728,843,1757"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.movieapp.core.network-mergeReleaseResources-41:/values-ms/values-ms.xml",
+            "map": [
+                {
+                    "source": "/Users/tamersarioglu/.gradle/caches/8.10.2/transforms/cc0d9cc32725654ff9dbeefc05fea639/transformed/ui-1.0.1/res/values-ms/values-ms.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,195,279,375,458,541,628,713,779,846,918,984",
+                        "endColumns": "89,83,95,82,82,86,84,65,66,71,65,119",
+                        "endOffsets": "190,274,370,453,536,623,708,774,841,913,979,1099"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12,13,14,15,16,17,18,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "848,938,1022,1118,1201,1284,1371,1456,1522,1589,1762,1828",
+                        "endColumns": "89,83,95,82,82,86,84,65,66,71,65,119",
+                        "endOffsets": "933,1017,1113,1196,1279,1366,1451,1517,1584,1656,1823,1943"
+                    }
+                },
+                {
+                    "source": "/Users/tamersarioglu/.gradle/caches/8.10.2/transforms/d60edde32f5aea4d99957c4510a5b96c/transformed/core-1.12.0/res/values-ms/values-ms.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,150,252,349,459,565,683,798",
+                        "endColumns": "94,101,96,109,105,117,114,100",
+                        "endOffsets": "145,247,344,454,560,678,793,894"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,19",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,200,302,399,509,615,733,1661",
+                        "endColumns": "94,101,96,109,105,117,114,100",
+                        "endOffsets": "195,297,394,504,610,728,843,1757"
+                    }
+                }
+            ]
+        }
+    ]
+}

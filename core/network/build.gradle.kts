@@ -1,6 +1,16 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("movieapp.android.library")
     id("movieapp.android.hilt")
+}
+
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        load(FileInputStream(localPropertiesFile))
+    }
 }
 
 android {
@@ -10,13 +20,13 @@ android {
         debug {
             isMinifyEnabled = false
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-            buildConfigField("String", "API_KEY", "\"your_debug_api_key\"")
+            buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("TMDB_API_KEY") ?: ""}\"")
         }
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-            buildConfigField("String", "API_KEY", "\"your_production_api_key\"")
+            buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("TMDB_API_KEY") ?: ""}\"")
         }
     }
 

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.movieapp.core.network-merged_res-43:/drawable-xxxhdpi-v4/ic_call_answer_video.png",
+        "source": "com.movieapp.core.network-core-1.12.0-34:/drawable-xxxhdpi-v4/ic_call_answer_video.png"
+    },
+    {
+        "merged": "com.movieapp.core.network-merged_res-43:/drawable-xxxhdpi-v4/ic_call_answer_low.png",
+        "source": "com.movieapp.core.network-core-1.12.0-34:/drawable-xxxhdpi-v4/ic_call_answer_low.png"
+    },
+    {
+        "merged": "com.movieapp.core.network-merged_res-43:/drawable-xxxhdpi-v4/ic_call_answer_video_low.png",
+        "source": "com.movieapp.core.network-core-1.12.0-34:/drawable-xxxhdpi-v4/ic_call_answer_video_low.png"
+    },
+    {
+        "merged": "com.movieapp.core.network-merged_res-43:/drawable-xxxhdpi-v4/ic_call_decline.png",
+        "source": "com.movieapp.core.network-core-1.12.0-34:/drawable-xxxhdpi-v4/ic_call_decline.png"
+    },
+    {
+        "merged": "com.movieapp.core.network-merged_res-43:/drawable-xxxhdpi-v4/ic_call_answer.png",
+        "source": "com.movieapp.core.network-core-1.12.0-34:/drawable-xxxhdpi-v4/ic_call_answer.png"
+    },
+    {
+        "merged": "com.movieapp.core.network-merged_res-43:/drawable-xxxhdpi-v4/ic_call_decline_low.png",
+        "source": "com.movieapp.core.network-core-1.12.0-34:/drawable-xxxhdpi-v4/ic_call_decline_low.png"
+    }
+]

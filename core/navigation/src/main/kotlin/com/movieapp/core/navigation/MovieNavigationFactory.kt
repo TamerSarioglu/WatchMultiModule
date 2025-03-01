@@ -17,7 +17,9 @@ class MovieNavigationFactory {
         homeScreen: @Composable () -> Unit,
         popularScreen: @Composable () -> Unit,
         topRatedScreen: @Composable () -> Unit,
-        movieDetailScreen: @Composable (Int) -> Unit
+        movieDetailScreen: @Composable (Int) -> Unit,
+        searchScreen: @Composable () -> Unit = {},
+        favoritesScreen: @Composable () -> Unit = {}
     ) {
         NavHost(
             navController = navController,
@@ -27,6 +29,8 @@ class MovieNavigationFactory {
             addPopularScreen(popularScreen)
             addTopRatedScreen(topRatedScreen)
             addMovieDetailScreen(movieDetailScreen)
+            addSearchScreen(searchScreen)
+            addFavoritesScreen(favoritesScreen)
         }
     }
     
@@ -65,6 +69,22 @@ class MovieNavigationFactory {
         ) { backStackEntry ->
             val movieId = backStackEntry.arguments?.getInt("movieId") ?: return@composable
             movieDetailScreen(movieId)
+        }
+    }
+
+    private fun NavGraphBuilder.addSearchScreen(
+        searchScreen: @Composable () -> Unit
+    ) {
+        composable(route = MovieNavigation.Search.route) {
+            searchScreen()
+        }
+    }
+
+    private fun NavGraphBuilder.addFavoritesScreen(
+        favoritesScreen: @Composable () -> Unit
+    ) {
+        composable(route = MovieNavigation.Favorites.route) {
+            favoritesScreen()
         }
     }
 } 

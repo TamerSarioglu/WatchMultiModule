@@ -7,4 +7,6 @@ sealed class MovieNavigation(val route: String) {
     object MovieDetail : MovieNavigation("movie/{movieId}") {
         fun createRoute(movieId: Int) = "movie/$movieId"
     }
+    object Search : MovieNavigation("search")
+    object Favorites : MovieNavigation("favorites")
 } 

@@ -19,154 +19,147 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.movieapp.feature.home.components.ErrorView
 import com.movieapp.feature.home.components.MovieSection
-import kotlin.random.Random
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
-    onMovieClick: (Int) -> Unit
+    onMovieClick: (Int) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    Scaffold(
-        containerColor = Color(0xFF1C1B1F) // Dark background color
-    ) { paddingValues ->
-        when {
-            state.isLoading -> {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator()
-                }
+    when {
+        state.isLoading -> {
+            Box(
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
             }
-            state.error != null -> {
-                ErrorView(
-                    message = state.error ?: "Unknown error occurred",
-                    onRetry = viewModel::retryLoading,
-                    modifier = Modifier.padding(paddingValues)
-                )
-            }
-            else -> {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .verticalScroll(rememberScrollState())
-                        .padding(paddingValues)
-                ) {
-                    // Featured Movie Section - Random Popular Movie
-                    state.popularMovies.randomOrNull()?.let { featuredMovie ->
+        }
+        state.error != null -> {
+            ErrorView(
+                message = state.error ?: "Unknown error occurred",
+                onRetry = viewModel::retryLoading,
+                modifier = modifier
+            )
+        }
+        else -> {
+            Column(
+                modifier = modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                // Featured Movie Section - Random Popular Movie
+                state.popularMovies.randomOrNull()?.let { featuredMovie ->
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(400.dp)
+                    ) {
+                        AsyncImage(
+                            model = "https://image.tmdb.org/t/p/original${featuredMovie.backdropPath}",
+                            contentDescription = featuredMovie.title,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop
+                        )
+                        
+                        // Gradient scrim to make text more readable
                         Box(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .height(400.dp)
-                        ) {
-                            AsyncImage(
-                                model = "https://image.tmdb.org/t/p/original${featuredMovie.backdropPath}",
-                                contentDescription = featuredMovie.title,
-                                modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.Crop
-                            )
-                            
-                            // Gradient scrim to make text more readable
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .background(
-                                        brush = Brush.verticalGradient(
-                                            colors = listOf(
-                                                Color.Transparent,
-                                                Color(0xFF1C1B1F).copy(alpha = 0.95f)
-                                            ),
-                                            startY = 0f,
-                                            endY = Float.POSITIVE_INFINITY
-                                        )
+                                .fillMaxSize()
+                                .background(
+                                    brush = Brush.verticalGradient(
+                                        colors = listOf(
+                                            Color.Transparent,
+                                            Color(0xFF1C1B1F).copy(alpha = 0.95f)
+                                        ),
+                                        startY = 0f,
+                                        endY = Float.POSITIVE_INFINITY
                                     )
+                                )
+                        )
+                        
+                        Column(
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .padding(16.dp)
+                        ) {
+                            Text(
+                                text = "Trending this week",
+                                style = MaterialTheme.typography.titleMedium,
+                                color = Color.White.copy(alpha = 0.8f)
                             )
                             
-                            Column(
-                                modifier = Modifier
-                                    .align(Alignment.BottomStart)
-                                    .padding(16.dp)
+                            Text(
+                                text = featuredMovie.title,
+                                style = MaterialTheme.typography.headlineMedium,
+                                color = Color.White,
+                                fontWeight = FontWeight.Bold
+                            )
+                            
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
-                                    text = "Trending this week",
-                                    style = MaterialTheme.typography.titleMedium,
-                                    color = Color.White.copy(alpha = 0.8f)
+                                    text = featuredMovie.releaseDate.take(4),
+                                    color = Color.White.copy(alpha = 0.7f)
                                 )
-                                
                                 Text(
-                                    text = featuredMovie.title,
-                                    style = MaterialTheme.typography.headlineMedium,
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold
+                                    text = "★ ${String.format("%.1f", featuredMovie.rating)}",
+                                    color = Color.White.copy(alpha = 0.7f)
                                 )
-                                
-                                Row(
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Text(
-                                        text = featuredMovie.releaseDate.take(4),
-                                        color = Color.White.copy(alpha = 0.7f)
-                                    )
-                                    Text(
-                                        text = "★ ${String.format("%.1f", featuredMovie.rating)}",
-                                        color = Color.White.copy(alpha = 0.7f)
-                                    )
-                                }
+                            }
 
-                                // Movie Description
-                                Text(
-                                    text = featuredMovie.overview,
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = Color.White.copy(alpha = 0.7f),
-                                    maxLines = 3,
-                                    overflow = TextOverflow.Ellipsis,
-                                    modifier = Modifier.padding(vertical = 8.dp)
+                            Text(
+                                text = featuredMovie.overview,
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = Color.White.copy(alpha = 0.7f),
+                                maxLines = 3,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.padding(vertical = 8.dp)
+                            )
+                            
+                            FilledTonalButton(
+                                onClick = { onMovieClick(featuredMovie.id) },
+                                modifier = Modifier.padding(top = 8.dp),
+                                colors = ButtonDefaults.filledTonalButtonColors(
+                                    containerColor = Color.White.copy(alpha = 0.1f),
+                                    contentColor = Color.White
                                 )
-                                
-                                FilledTonalButton(
-                                    onClick = { onMovieClick(featuredMovie.id) },
-                                    modifier = Modifier.padding(top = 8.dp),
-                                    colors = ButtonDefaults.filledTonalButtonColors(
-                                        containerColor = Color.White.copy(alpha = 0.1f),
-                                        contentColor = Color.White
-                                    )
-                                ) {
-                                    Text("Watch trailer")
-                                }
+                            ) {
+                                Text("Watch trailer")
                             }
                         }
                     }
-                    
-                    Spacer(modifier = Modifier.height(16.dp))
-                    
-                    MovieSection(
-                        title = "Popular Movies",
-                        movies = state.popularMovies,
-                        onMovieClick = onMovieClick
-                    )
-                    
-                    Spacer(modifier = Modifier.height(24.dp))
-                    
-                    MovieSection(
-                        title = "Top Rated Movies",
-                        movies = state.topRatedMovies,
-                        onMovieClick = onMovieClick
-                    )
-                    
-                    Spacer(modifier = Modifier.height(24.dp))
-                    
-                    MovieSection(
-                        title = "Now Playing",
-                        movies = state.nowPlayingMovies,
-                        onMovieClick = onMovieClick
-                    )
-                    
-                    Spacer(modifier = Modifier.height(16.dp))
                 }
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                MovieSection(
+                    title = "Popular Movies",
+                    movies = state.popularMovies,
+                    onMovieClick = onMovieClick
+                )
+                
+                Spacer(modifier = Modifier.height(24.dp))
+                
+                MovieSection(
+                    title = "Top Rated Movies",
+                    movies = state.topRatedMovies,
+                    onMovieClick = onMovieClick
+                )
+                
+                Spacer(modifier = Modifier.height(24.dp))
+                
+                MovieSection(
+                    title = "Now Playing",
+                    movies = state.nowPlayingMovies,
+                    onMovieClick = onMovieClick
+                )
+                
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }

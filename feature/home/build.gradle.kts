@@ -13,7 +13,9 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:domain"))
     implementation(project(":core:navigation"))
-    implementation(project(":core:network"))  // Add this line to access Movie model
+    implementation(project(":core:network"))
+    implementation(project(":feature:search"))
+    implementation(project(":feature:favorites"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.hilt.navigation.compose)

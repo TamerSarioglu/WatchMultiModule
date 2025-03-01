@@ -28,6 +28,7 @@ include(":core:network")
 include(":core:data")
 include(":core:domain")
 include(":core:testing")
+include(":core:navigation")
 
 // Feature modules
 include(":feature:home")

@@ -23,7 +23,7 @@ android {
             buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("TMDB_API_KEY") ?: ""}\"")
         }
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false  // Disable minification for now
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("TMDB_API_KEY") ?: ""}\"")

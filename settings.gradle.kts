@@ -1,16 +1,13 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
 }
+
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -19,6 +16,21 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "WatchMultiModule"
+rootProject.name = "MovieApp"
+
+// App module
 include(":app")
-include(":build-logic")
+
+// Core modules
+include(":core:common")
+include(":core:ui")
+include(":core:network")
+include(":core:data")
+include(":core:domain")
+include(":core:testing")
+
+// Feature modules
+include(":feature:home")
+include(":feature:details")
+include(":feature:search")
+include(":feature:favorites")

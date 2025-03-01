@@ -1,17 +1,14 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    id("movieapp.android.application")
+    id("movieapp.android.hilt")
+    id("movieapp.android.compose")
 }
 
 android {
-    namespace = "com.tamersarioglu.watchmultimodule"
-    compileSdk = 35
+    namespace = "com.movieapp"
 
     defaultConfig {
-        applicationId = "com.tamersarioglu.watchmultimodule"
-        minSdk = 24
-        targetSdk = 35
+        applicationId = "com.movieapp"
         versionCode = 1
         versionName = "1.0"
 
@@ -27,33 +24,18 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
+    // Feature modules
+    implementation(project(":feature:home"))
+    implementation(project(":feature:details"))
+    implementation(project(":feature:search"))
+    implementation(project(":feature:favorites"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    // Core modules
+    implementation(project(":core:ui"))
+    implementation(project(":core:common"))
+    implementation(project(":core:data"))
+    implementation(project(":core:domain"))
 }

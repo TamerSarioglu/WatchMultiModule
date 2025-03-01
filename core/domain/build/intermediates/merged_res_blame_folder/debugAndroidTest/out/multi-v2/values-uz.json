@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.movieapp.core.domain.test.domain-mergeDebugAndroidTestResources-43:/values-uz/values-uz.xml",
+            "map": [
+                {
+                    "source": "/Users/tamersarioglu/.gradle/caches/8.10.2/transforms/d60edde32f5aea4d99957c4510a5b96c/transformed/core-1.12.0/res/values-uz/values-uz.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,157,259,360,460,568,672,791",
+                        "endColumns": "101,101,100,99,107,103,118,100",
+                        "endOffsets": "152,254,355,455,563,667,786,887"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,19",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,207,309,410,510,618,722,1710",
+                        "endColumns": "101,101,100,99,107,103,118,100",
+                        "endOffsets": "202,304,405,505,613,717,836,1806"
+                    }
+                },
+                {
+                    "source": "/Users/tamersarioglu/.gradle/caches/8.10.2/transforms/cc0d9cc32725654ff9dbeefc05fea639/transformed/ui-1.0.1/res/values-uz/values-uz.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,204,289,393,476,589,682,765,833,900,974,1042",
+                        "endColumns": "98,84,103,82,112,92,82,67,66,73,67,116",
+                        "endOffsets": "199,284,388,471,584,677,760,828,895,969,1037,1154"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12,13,14,15,16,17,18,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "841,940,1025,1129,1212,1325,1418,1501,1569,1636,1811,1879",
+                        "endColumns": "98,84,103,82,112,92,82,67,66,73,67,116",
+                        "endOffsets": "935,1020,1124,1207,1320,1413,1496,1564,1631,1705,1874,1991"
+                    }
+                }
+            ]
+        }
+    ]
+}

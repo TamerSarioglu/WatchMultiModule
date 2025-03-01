@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.movieapp.core.common.test.common-mergeDebugAndroidTestResources-41:/values-mk/values-mk.xml",
+            "map": [
+                {
+                    "source": "/Users/tamersarioglu/.gradle/caches/8.10.2/transforms/cc0d9cc32725654ff9dbeefc05fea639/transformed/ui-1.0.1/res/values-mk/values-mk.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,209,299,395,472,579,671,755,826,896,968,1039",
+                        "endColumns": "103,89,95,76,106,91,83,70,69,71,70,120",
+                        "endOffsets": "204,294,390,467,574,666,750,821,891,963,1034,1155"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12,13,14,15,16,17,18,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "824,928,1018,1114,1191,1298,1390,1474,1545,1615,1788,1859",
+                        "endColumns": "103,89,95,76,106,91,83,70,69,71,70,120",
+                        "endOffsets": "923,1013,1109,1186,1293,1385,1469,1540,1610,1682,1854,1975"
+                    }
+                },
+                {
+                    "source": "/Users/tamersarioglu/.gradle/caches/8.10.2/transforms/d60edde32f5aea4d99957c4510a5b96c/transformed/core-1.12.0/res/values-mk/values-mk.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,255,352,450,555,658,774",
+                        "endColumns": "97,101,96,97,104,102,115,100",
+                        "endOffsets": "148,250,347,445,550,653,769,870"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,19",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,203,305,402,500,605,708,1687",
+                        "endColumns": "97,101,96,97,104,102,115,100",
+                        "endOffsets": "198,300,397,495,600,703,819,1783"
+                    }
+                }
+            ]
+        }
+    ]
+}

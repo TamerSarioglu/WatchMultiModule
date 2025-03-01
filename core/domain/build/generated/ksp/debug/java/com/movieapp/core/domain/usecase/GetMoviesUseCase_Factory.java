@@ -1,7 +1,7 @@
 package com.movieapp.core.domain.usecase;
 
+import com.movieapp.core.data.repository.MovieRepository;
 import com.movieapp.core.domain.mapper.MovieMapper;
-import com.movieapp.core.network.repository.MovieRepository;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.QualifierMetadata;

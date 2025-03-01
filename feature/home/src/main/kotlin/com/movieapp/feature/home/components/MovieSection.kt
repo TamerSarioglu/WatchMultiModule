@@ -8,12 +8,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.movieapp.core.network.models.Movie
+import com.movieapp.core.domain.model.MovieDomain
 
 @Composable
 fun MovieSection(
     title: String,
-    movies: List<Movie>,
+    movies: List<MovieDomain>,
     onMovieClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {

@@ -11,11 +11,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.movieapp.core.network.models.Movie
+import com.movieapp.core.domain.model.MovieDomain
 
 @Composable
 fun MovieCard(
-    movie: Movie,
+    movie: MovieDomain,
     onMovieClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {

@@ -2,9 +2,7 @@ package com.movieapp.feature.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.movieapp.core.domain.usecase.GetPopularMoviesUseCase
-import com.movieapp.core.domain.usecase.GetTopRatedMoviesUseCase
-import com.movieapp.core.domain.usecase.GetNowPlayingMoviesUseCase
+import com.movieapp.core.domain.usecase.GetMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,9 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getPopularMoviesUseCase: GetPopularMoviesUseCase,
-    private val getTopRatedMoviesUseCase: GetTopRatedMoviesUseCase,
-    private val getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase
+    private val moviesUseCase: GetMoviesUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(HomeState())
@@ -35,8 +31,8 @@ class HomeViewModel @Inject constructor(
                 // Launch parallel requests
                 val popularDeferred = viewModelScope.launch {
                     try {
-                        val response = getPopularMoviesUseCase(1)
-                        _state.update { it.copy(popularMovies = response.results) }
+                        val popularMovies = moviesUseCase.getPopularMovies(1)
+                        _state.update { it.copy(popularMovies = popularMovies) }
                     } catch (e: Exception) {
                         _state.update { it.copy(error = "Failed to load popular movies") }
                     }
@@ -44,8 +40,8 @@ class HomeViewModel @Inject constructor(
 
                 val topRatedDeferred = viewModelScope.launch {
                     try {
-                        val response = getTopRatedMoviesUseCase(1)
-                        _state.update { it.copy(topRatedMovies = response.results) }
+                        val topRatedMovies = moviesUseCase.getTopRatedMovies(1)
+                        _state.update { it.copy(topRatedMovies = topRatedMovies) }
                     } catch (e: Exception) {
                         _state.update { it.copy(error = "Failed to load top rated movies") }
                     }
@@ -53,8 +49,8 @@ class HomeViewModel @Inject constructor(
 
                 val nowPlayingDeferred = viewModelScope.launch {
                     try {
-                        val response = getNowPlayingMoviesUseCase(1)
-                        _state.update { it.copy(nowPlayingMovies = response.results) }
+                        val nowPlayingMovies = moviesUseCase.getNowPlayingMovies(1)
+                        _state.update { it.copy(nowPlayingMovies = nowPlayingMovies) }
                     } catch (e: Exception) {
                         _state.update { it.copy(error = "Failed to load now playing movies") }
                     }

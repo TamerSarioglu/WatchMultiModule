@@ -2,8 +2,6 @@ package com.movieapp.core.network.di
 
 import com.movieapp.core.network.BuildConfig
 import com.movieapp.core.network.api.MovieApi
-import com.movieapp.core.network.repository.MovieRepository
-import com.movieapp.core.network.repository.MovieRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -74,11 +72,5 @@ object NetworkModule {
     @Singleton
     fun provideMovieApi(retrofit: Retrofit): MovieApi {
         return retrofit.create(MovieApi::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideMovieRepository(movieApi: MovieApi): MovieRepository {
-        return MovieRepositoryImpl(movieApi)
     }
 } 

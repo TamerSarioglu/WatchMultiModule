@@ -1,16 +1,16 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\androidstudioprojeler\WatchMultiModule\core\ui\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9875461452797175110.xml:2:13-83
-INJECTED from D:\androidstudioprojeler\WatchMultiModule\core\ui\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9875461452797175110.xml:2:13-83
+ADDED from /Users/tamersarioglu/AndroidStudioProjects/WatchMultiModule/core/ui/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest7828399215562671696.xml:2:13-83
+INJECTED from /Users/tamersarioglu/AndroidStudioProjects/WatchMultiModule/core/ui/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest7828399215562671696.xml:2:13-83
 	package
-		INJECTED from D:\androidstudioprojeler\WatchMultiModule\core\ui\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9875461452797175110.xml
+		INJECTED from /Users/tamersarioglu/AndroidStudioProjects/WatchMultiModule/core/ui/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest7828399215562671696.xml
 	xmlns:android
-		ADDED from D:\androidstudioprojeler\WatchMultiModule\core\ui\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9875461452797175110.xml:2:23-81
+		ADDED from /Users/tamersarioglu/AndroidStudioProjects/WatchMultiModule/core/ui/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest7828399215562671696.xml:2:23-81
 uses-sdk
-INJECTED from D:\androidstudioprojeler\WatchMultiModule\core\ui\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9875461452797175110.xml reason: use-sdk injection requested
-INJECTED from D:\androidstudioprojeler\WatchMultiModule\core\ui\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9875461452797175110.xml
-INJECTED from D:\androidstudioprojeler\WatchMultiModule\core\ui\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9875461452797175110.xml
+INJECTED from /Users/tamersarioglu/AndroidStudioProjects/WatchMultiModule/core/ui/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest7828399215562671696.xml reason: use-sdk injection requested
+INJECTED from /Users/tamersarioglu/AndroidStudioProjects/WatchMultiModule/core/ui/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest7828399215562671696.xml
+INJECTED from /Users/tamersarioglu/AndroidStudioProjects/WatchMultiModule/core/ui/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest7828399215562671696.xml
 	android:targetSdkVersion
-		INJECTED from D:\androidstudioprojeler\WatchMultiModule\core\ui\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9875461452797175110.xml
+		INJECTED from /Users/tamersarioglu/AndroidStudioProjects/WatchMultiModule/core/ui/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest7828399215562671696.xml
 	android:minSdkVersion
-		INJECTED from D:\androidstudioprojeler\WatchMultiModule\core\ui\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest9875461452797175110.xml
+		INJECTED from /Users/tamersarioglu/AndroidStudioProjects/WatchMultiModule/core/ui/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest7828399215562671696.xml

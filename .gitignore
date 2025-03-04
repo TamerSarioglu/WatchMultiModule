@@ -1,54 +1,71 @@
+# ============================
+# Android/Gradle Project .gitignore
+# ============================
+
 # Gradle files
 .gradle/
 build/
-*/build/
 **/build/
 
-# Local configuration file
+# Local configuration (sdk paths, keys, etc.)
 local.properties
 
-# IDE files
+# Android Studio / IntelliJ IDEA
 .idea/
-.vscode/
 *.iml
+
+# VS Code settings
+.vscode/
+
+# macOS system files
 .DS_Store
 
-# Generated files
+# Generated files (build outputs, generated sources)
 **/generated/
 bin/
 gen/
 out/
 
-# Android Studio Navigation editor temp files
+# Android Studio Navigation editor temporary files
 .navigation/
 
-# Android Studio captures folder
+# Android Studio captures folder (screenshots, etc.)
 captures/
 
-# IntelliJ
-*.iml
+# IntelliJ IDEA specific files
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml
 .idea/assetWizardSettings.xml
-.idea/dictionaries
-.idea/libraries
-.idea/caches
+.idea/dictionaries/
+.idea/libraries/
+.idea/caches/
 
-# Keystore files
+# Keystore files (signing keys, etc.)
 *.jks
 *.keystore
 
-# External native build folder
-.externalNativeBuild
+# External native build folder (NDK, C++ code)
+.externalNativeBuild/
 .cxx/
 
-# Version control
+# Version control configuration files
 vcs.xml
 
-# lint
+# Lint reports and temporary lint files
 lint/intermediates/
 lint/generated/
 lint/outputs/
 lint/tmp/
 lint/reports/
+
+# Log and temporary files
+*.log
+*.tmp
+
+# Generated Java files
+**/generated/
+**/build/generated/
+**/build/intermediates/
+**/build/tmp/
+**/build/kotlin/

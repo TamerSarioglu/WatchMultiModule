@@ -62,3 +62,10 @@ lint/reports/
 # Log and temporary files
 *.log
 *.tmp
+
+# Generated Java files
+**/generated/
+**/build/generated/
+**/build/intermediates/
+**/build/tmp/
+**/build/kotlin/

@@ -15,6 +15,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.compose)
     implementation(project(":core:navigation"))
     implementation(project(":core:network"))
+    implementation(project(":core:domain"))
+    implementation(libs.coil.compose)
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext)

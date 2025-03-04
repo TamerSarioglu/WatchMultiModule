@@ -8,7 +8,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:data"))
+    implementation(project(":core:repository"))
     implementation(project(":core:network"))
     
     implementation(libs.androidx.core.ktx)

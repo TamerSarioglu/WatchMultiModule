@@ -4,18 +4,15 @@ plugins {
 }
 
 android {
-    namespace = "com.movieapp.core.data"
+    namespace = "com.movieapp.core.repository"
 }
 
 dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:network"))
-    implementation(project(":core:repository"))
     
+    // You might need these depending on your implementation
     implementation(libs.androidx.core.ktx)
-    implementation(libs.retrofit.core)
-    implementation(libs.retrofit.converter.gson)
-    implementation(libs.okhttp.logging)
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext)

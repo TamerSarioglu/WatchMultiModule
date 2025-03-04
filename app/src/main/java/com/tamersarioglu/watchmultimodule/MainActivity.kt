@@ -10,7 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.movieapp.core.navigation.MovieNavigation
 import com.movieapp.core.navigation.MovieNavigationFactory
+import com.movieapp.core.navigation.rememberMovieNavigationActions
 import com.movieapp.feature.home.MainScreen
+import com.tamerthedark.watchmultimodule.feature.details.DetailsScreen
 import com.tamersarioglu.watchmultimodule.ui.theme.WatchMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -28,6 +30,7 @@ class MainActivity : ComponentActivity() {
             WatchMultiModuleTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     val navController = rememberNavController()
+                    val navigationActions = rememberMovieNavigationActions(navController)
                     
                     navigationFactory.CreateNavigation(
                         navController = navController,
@@ -46,7 +49,12 @@ class MainActivity : ComponentActivity() {
                         },
                         popularScreen = { /* Will be implemented later */ },
                         topRatedScreen = { /* Will be implemented later */ },
-                        movieDetailScreen = { /* Will be implemented later */ },
+                        movieDetailScreen = { movieId ->
+                            DetailsScreen(
+                                movieId = movieId,
+                                navigationActions = navigationActions
+                            )
+                        },
                         searchScreen = {
                             // Import and use your SearchScreen here
                         },

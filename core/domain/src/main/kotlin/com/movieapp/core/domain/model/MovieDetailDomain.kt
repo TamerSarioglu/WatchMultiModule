@@ -15,7 +15,8 @@ data class MovieDetailDomain(
     val budget: Int,
     val revenue: Long,
     val productionCompanies: List<String>,
-    val productionCountries: List<String>
+    val productionCountries: List<String>,
+    val actors: List<ActorDomain> = emptyList()
 ) {
     val posterUrl: String
         get() = "https://image.tmdb.org/t/p/w500$posterPath"
@@ -31,4 +32,14 @@ data class MovieDetailDomain(
         
     val formattedRevenue: String
         get() = "$${revenue/1_000_000}M"
+}
+
+data class ActorDomain(
+    val id: Int,
+    val name: String,
+    val character: String,
+    val profilePath: String?
+) {
+    val profileUrl: String
+        get() = if (profilePath != null) "https://image.tmdb.org/t/p/w185$profilePath" else ""
 } 

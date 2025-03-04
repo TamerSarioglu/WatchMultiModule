@@ -1,6 +1,6 @@
 package com.movieapp.core.domain.usecase
 
-import com.movieapp.core.data.repository.MovieRepository
+import com.movieapp.core.repository.MovieRepository
 import com.movieapp.core.domain.mapper.MovieMapper
 import com.movieapp.core.domain.model.MovieDomain
 import javax.inject.Inject

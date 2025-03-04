@@ -1,7 +1,7 @@
 package com.movieapp.core.data.di
 
-import com.movieapp.core.data.repository.MovieRepository
 import com.movieapp.core.data.repository.MovieRepositoryImpl
+import com.movieapp.core.repository.MovieRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

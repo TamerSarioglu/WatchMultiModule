@@ -3,6 +3,7 @@ package com.movieapp.core.data.repository
 import com.movieapp.core.network.api.MovieApi
 import com.movieapp.core.network.models.MovieDetail
 import com.movieapp.core.network.models.MovieResponse
+import com.movieapp.core.repository.MovieRepository
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(

@@ -26,5 +26,40 @@ data class MovieDetail(
     @SerializedName("title") val title: String,
     @SerializedName("video") val video: Boolean,
     @SerializedName("vote_average") val voteAverage: Double,
-    @SerializedName("vote_count") val voteCount: Int
+    @SerializedName("vote_count") val voteCount: Int,
+    @SerializedName("credits") val credits: Credits? = null
+)
+
+data class Credits(
+    @SerializedName("cast") val cast: List<Cast> = emptyList(),
+    @SerializedName("crew") val crew: List<Crew> = emptyList()
+)
+
+data class Cast(
+    @SerializedName("adult") val adult: Boolean,
+    @SerializedName("gender") val gender: Int,
+    @SerializedName("id") val id: Int,
+    @SerializedName("known_for_department") val knownForDepartment: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("original_name") val originalName: String,
+    @SerializedName("popularity") val popularity: Double,
+    @SerializedName("profile_path") val profilePath: String?,
+    @SerializedName("cast_id") val castId: Int,
+    @SerializedName("character") val character: String,
+    @SerializedName("credit_id") val creditId: String,
+    @SerializedName("order") val order: Int
+)
+
+data class Crew(
+    @SerializedName("adult") val adult: Boolean,
+    @SerializedName("gender") val gender: Int,
+    @SerializedName("id") val id: Int,
+    @SerializedName("known_for_department") val knownForDepartment: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("original_name") val originalName: String,
+    @SerializedName("popularity") val popularity: Double,
+    @SerializedName("profile_path") val profilePath: String?,
+    @SerializedName("credit_id") val creditId: String,
+    @SerializedName("department") val department: String,
+    @SerializedName("job") val job: String
 ) 

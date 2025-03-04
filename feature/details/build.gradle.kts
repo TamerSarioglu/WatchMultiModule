@@ -13,6 +13,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.compose)
+    implementation(project(":core:navigation"))
+    implementation(project(":core:network"))
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext)

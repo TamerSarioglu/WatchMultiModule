@@ -20,6 +20,7 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:data"))
     implementation(project(":core:navigation"))
+    implementation(project(":core:ui"))
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext)

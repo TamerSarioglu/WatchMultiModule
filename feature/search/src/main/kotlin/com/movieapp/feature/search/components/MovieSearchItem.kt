@@ -10,7 +10,18 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -21,7 +32,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -36,17 +47,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.movieapp.core.domain.model.MovieDomain
-import com.movieapp.core.ui.theme.*
+import com.movieapp.core.ui.theme.AccentColor
+import com.movieapp.core.ui.theme.CardBackground
+import com.movieapp.core.ui.theme.DarkBackground
+import com.movieapp.core.ui.theme.DarkerCardBackground
+import com.movieapp.core.ui.theme.ExpandedSectionBackground
+import com.movieapp.core.ui.theme.GenreColor
+import com.movieapp.core.ui.theme.RatingColor
+import com.movieapp.core.ui.theme.TextColor
+import com.movieapp.core.ui.theme.TextSecondaryColor
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -65,6 +82,7 @@ private fun formatReleaseDate(dateString: String): String {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MovieSearchItem(
     movie: MovieDomain,
@@ -179,7 +197,7 @@ fun MovieSearchItem(
                                     )
                                     Spacer(modifier = Modifier.width(2.dp))
                                     Text(
-                                        text = String.format("%.1f", movie.rating),
+                                        text = String.format(Locale.US,"%.1f", movie.rating),
                                         style = MaterialTheme.typography.labelMedium,
                                         fontWeight = FontWeight.Bold,
                                         color = RatingColor
@@ -274,11 +292,11 @@ fun MovieSearchItem(
                             GenreChip(genre = "Thriller")
                         }
                     }
-                    
-                    Divider(
-                        color = DarkBackground,
+
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 8.dp),
                         thickness = 1.dp,
-                        modifier = Modifier.padding(vertical = 8.dp)
+                        color = DarkBackground
                     )
                     
                     // Release and Rating info - more detailed
@@ -344,7 +362,7 @@ fun MovieSearchItem(
                     Button(
                         onClick = { onMovieClick(movie.id) },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = AccentColor
+                            containerColor = RatingColor
                         ),
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(8.dp),
@@ -390,6 +408,7 @@ fun GenreChip(genre: String) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true)
 @Composable
 fun MovieSearchItemPreview() {

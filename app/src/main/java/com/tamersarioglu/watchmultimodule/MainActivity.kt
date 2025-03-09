@@ -57,7 +57,6 @@ class MainActivity : ComponentActivity() {
                         },
                         searchScreen = {
                             com.movieapp.feature.search.navigation.SearchRoute(
-                                navController = navController,
                                 navigationActions = navigationActions
                             )
                         },

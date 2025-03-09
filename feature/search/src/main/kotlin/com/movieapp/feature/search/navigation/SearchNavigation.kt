@@ -10,7 +10,6 @@ import com.movieapp.feature.search.SearchScreen
  */
 @Composable
 fun SearchRoute(
-    navController: NavHostController,
     navigationActions: MovieNavigationActions
 ) {
     SearchScreen(

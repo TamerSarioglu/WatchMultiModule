@@ -56,7 +56,10 @@ class MainActivity : ComponentActivity() {
                             )
                         },
                         searchScreen = {
-                            // Import and use your SearchScreen here
+                            com.movieapp.feature.search.navigation.SearchRoute(
+                                navController = navController,
+                                navigationActions = navigationActions
+                            )
                         },
                         favoritesScreen = {
                             // Import and use your FavoritesScreen here

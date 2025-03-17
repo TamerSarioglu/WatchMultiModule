@@ -1,5 +1,7 @@
 package com.movieapp.feature.home
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -7,8 +9,10 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.movieapp.feature.search.SearchScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -19,6 +23,9 @@ fun MainScreen(
     onNavigateToFavorites: () -> Unit
 ) {
     var selectedTab by remember { mutableStateOf(0) }
+    
+    // State to track current content
+    val currentScreen = remember { mutableStateOf(0) }
 
     Scaffold(
         modifier = modifier,
@@ -30,7 +37,10 @@ fun MainScreen(
             ) {
                 NavigationBarItem(
                     selected = selectedTab == 0,
-                    onClick = { selectedTab = 0 },
+                    onClick = { 
+                        selectedTab = 0 
+                        currentScreen.value = 0
+                    },
                     icon = {
                         Icon(
                             imageVector = Icons.Default.Home,
@@ -50,7 +60,8 @@ fun MainScreen(
                     selected = selectedTab == 1,
                     onClick = { 
                         selectedTab = 1
-                        onNavigateToSearch()
+                        currentScreen.value = 1
+                        // Don't navigate away, just change the content
                     },
                     icon = {
                         Icon(
@@ -71,7 +82,8 @@ fun MainScreen(
                     selected = selectedTab == 2,
                     onClick = { 
                         selectedTab = 2
-                        onNavigateToFavorites()
+                        currentScreen.value = 2
+                        // Don't navigate away, just change the content
                     },
                     icon = {
                         Icon(
@@ -91,10 +103,35 @@ fun MainScreen(
             }
         }
     ) { paddingValues ->
-        // Only show HomeScreen here, other screens will be handled by navigation
-        HomeScreen(
-            onMovieClick = onMovieClick,
-            modifier = Modifier.padding(paddingValues)
-        )
+        // Show the appropriate screen based on the selected tab
+        when (currentScreen.value) {
+            0 -> HomeScreen(
+                onMovieClick = onMovieClick,
+                modifier = Modifier.padding(paddingValues)
+            )
+            1 -> SearchScreen(
+                onMovieClick = onMovieClick,
+                onBackClick = { 
+                    // No-op: Removing back functionality as requested
+                },
+                modifier = Modifier.padding(paddingValues)
+            )
+            2 -> {
+                // Call the favorites screen or a placeholder
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Favorites Screen", color = Color.White)
+                }
+                // Alternatively, call your actual favorites screen:
+                // FavoritesScreen(
+                //     onMovieClick = onMovieClick,
+                //     modifier = Modifier.padding(paddingValues)
+                // )
+            }
+        }
     }
 } 

@@ -39,12 +39,8 @@ class MainActivity : ComponentActivity() {
                                 onMovieClick = { movieId ->
                                     navController.navigate(MovieNavigation.MovieDetail.createRoute(movieId))
                                 },
-                                onNavigateToSearch = {
-                                    navController.navigate(MovieNavigation.Search.route)
-                                },
-                                onNavigateToFavorites = {
-                                    navController.navigate(MovieNavigation.Favorites.route)
-                                }
+                                onNavigateToSearch = { },
+                                onNavigateToFavorites = { }
                             )
                         },
                         popularScreen = { /* Will be implemented later */ },
@@ -55,12 +51,8 @@ class MainActivity : ComponentActivity() {
                                 navigationActions = navigationActions
                             )
                         },
-                        searchScreen = {
-                            // Import and use your SearchScreen here
-                        },
-                        favoritesScreen = {
-                            // Import and use your FavoritesScreen here
-                        }
+                        searchScreen = { /* Now handled in MainScreen */ },
+                        favoritesScreen = { /* Now handled in MainScreen */ }
                     )
                 }
             }

@@ -7,21 +7,21 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.movieapp.core.navigation.MovieNavigation
-import com.movieapp.core.navigation.MovieNavigationFactory
-import com.movieapp.core.navigation.rememberMovieNavigationActions
-import com.movieapp.feature.home.MainScreen
-import com.tamerthedark.watchmultimodule.feature.details.DetailsScreen
+import com.movieapp.core.navigation.extensions.navigateToFavorites
+import com.movieapp.core.navigation.extensions.navigateToMovieDetail
+import com.movieapp.core.navigation.extensions.navigateToSearch
+import com.movieapp.feature.favorites.navigation.favoritesGraph
+import com.movieapp.feature.home.navigation.homeGraph
+import com.tamerthedark.watchmultimodule.feature.details.navigation.detailsGraph
+import com.movieapp.feature.search.navigation.searchGraph
 import com.tamersarioglu.watchmultimodule.ui.theme.WatchMultiModuleTheme
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    @Inject
-    lateinit var navigationFactory: MovieNavigationFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,30 +30,48 @@ class MainActivity : ComponentActivity() {
             WatchMultiModuleTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     val navController = rememberNavController()
-                    val navigationActions = rememberMovieNavigationActions(navController)
                     
-                    navigationFactory.CreateNavigation(
+                    NavHost(
                         navController = navController,
-                        homeScreen = {
-                            MainScreen(
-                                onMovieClick = { movieId ->
-                                    navController.navigate(MovieNavigation.MovieDetail.createRoute(movieId))
-                                },
-                                onNavigateToSearch = { },
-                                onNavigateToFavorites = { }
-                            )
-                        },
-                        popularScreen = { /* Will be implemented later */ },
-                        topRatedScreen = { /* Will be implemented later */ },
-                        movieDetailScreen = { movieId ->
-                            DetailsScreen(
-                                movieId = movieId,
-                                navigationActions = navigationActions
-                            )
-                        },
-                        searchScreen = { /* Now handled in MainScreen */ },
-                        favoritesScreen = { /* Now handled in MainScreen */ }
-                    )
+                        startDestination = MovieNavigation.Home.route
+                    ) {
+                        // Use the extension functions from each feature module
+                        homeGraph(
+                            onMovieClick = { movieId -> 
+                                navController.navigateToMovieDetail(movieId)
+                            },
+                            onNavigateToSearch = { 
+                                navController.navigateToSearch() 
+                            },
+                            onNavigateToFavorites = { 
+                                navController.navigateToFavorites() 
+                            }
+                        )
+                        
+                        detailsGraph(
+                            onNavigateUp = { 
+                                navController.navigateUp() 
+                            }
+                        )
+                        
+                        searchGraph(
+                            onNavigateUp = { 
+                                navController.navigateUp() 
+                            },
+                            onMovieClick = { movieId ->
+                                navController.navigateToMovieDetail(movieId)
+                            }
+                        )
+                        
+                        favoritesGraph(
+                            onNavigateUp = { 
+                                navController.navigateUp() 
+                            },
+                            onMovieClick = { movieId ->
+                                navController.navigateToMovieDetail(movieId)
+                            }
+                        )
+                    }
                 }
             }
         }

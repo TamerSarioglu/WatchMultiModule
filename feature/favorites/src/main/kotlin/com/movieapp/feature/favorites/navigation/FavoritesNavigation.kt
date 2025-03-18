@@ -1,4 +1,4 @@
-package com.movieapp.feature.search.navigation
+package com.movieapp.feature.favorites.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,15 +11,15 @@ import androidx.navigation.compose.composable
 import com.movieapp.core.navigation.MovieNavigation
 
 /**
- * Extension function that adds the Search feature's navigation graph to a NavGraphBuilder
+ * Extension function that adds the Favorites feature's navigation graph to a NavGraphBuilder
  */
-fun NavGraphBuilder.searchGraph(
+fun NavGraphBuilder.favoritesGraph(
     onNavigateUp: () -> Unit,
     onMovieClick: (Int) -> Unit
 ) {
-    composable(route = MovieNavigation.Search.route) {
-        // Placeholder until the actual SearchScreen is implemented
-        SearchScreenPlaceholder(
+    composable(route = MovieNavigation.Favorites.route) {
+        // Placeholder until the actual FavoritesScreen is implemented
+        FavoritesScreenPlaceholder(
             onNavigateUp = onNavigateUp,
             onMovieClick = onMovieClick
         )
@@ -27,7 +27,7 @@ fun NavGraphBuilder.searchGraph(
 }
 
 @Composable
-private fun SearchScreenPlaceholder(
+private fun FavoritesScreenPlaceholder(
     onNavigateUp: () -> Unit,
     onMovieClick: (Int) -> Unit
 ) {
@@ -35,6 +35,6 @@ private fun SearchScreenPlaceholder(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Search Screen - Coming Soon")
+        Text(text = "Favorites Screen - Coming Soon")
     }
 } 

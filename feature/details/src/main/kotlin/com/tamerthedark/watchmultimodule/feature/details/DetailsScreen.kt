@@ -28,13 +28,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.movieapp.core.domain.model.ActorDomain
-import com.movieapp.core.navigation.MovieNavigationActions
 import java.util.Locale
 
 @Composable
 fun DetailsScreen(
     movieId: Int,
-    navigationActions: MovieNavigationActions,
+    onNavigateUp: () -> Unit,
     viewModel: DetailsViewModel = hiltViewModel()
 ) {
     // Load movie details when the screen is first displayed
@@ -116,7 +115,7 @@ fun DetailsScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             IconButton(
-                                onClick = { navigationActions.navigateUp() },
+                                onClick = { onNavigateUp() },
                                 modifier = Modifier
                                     .size(40.dp)
                                     .background(

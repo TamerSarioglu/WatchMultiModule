@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    namespace = "com.movieapp"
+    namespace = "com.tamersarioglu.watchmultimodule"
 
     defaultConfig {
-        applicationId = "com.movieapp"
+        applicationId = "com.tamersarioglu.watchmultimodule"
         versionCode = 1
         versionName = "1.0"
 

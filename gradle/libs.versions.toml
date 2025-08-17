@@ -1,23 +1,23 @@
 [versions]
-agp = "8.2.2"
-kotlin = "1.9.22"
+agp = "8.12.0"
+kotlin = "2.2.0"
 compose-compiler = "1.5.8"
-compose-bom = "2024.02.00"
-core-ktx = "1.12.0"
-lifecycle = "2.7.0"
-activity-compose = "1.8.2"
-navigation-compose = "2.7.7"
-hilt = "2.50"
+compose-bom = "2025.08.00"
+core-ktx = "1.17.0"
+lifecycle = "2.9.2"
+activity-compose = "1.10.1"
+navigation-compose = "2.9.3"
+hilt = "2.57"
 hilt-navigation = "1.2.0"
-retrofit = "2.9.0"
-okhttp = "4.12.0"
-ksp = "1.9.22-1.0.17"
-room = "2.6.1"
-coil = "2.5.0"
+retrofit = "3.0.0"
+okhttp = "5.1.0"
+ksp = "2.2.0-2.0.2"
+room = "2.7.2"
+coil = "2.7.0"
 junit = "4.13.2"
-androidx-test-ext = "1.1.5"
-espresso = "3.5.1"
-kotlinx-coroutines = "1.7.3"
+androidx-test-ext = "1.3.0"
+espresso = "3.7.0"
+kotlinx-coroutines = "1.10.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -64,6 +64,7 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 # Gradle Plugin Dependencies
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-compose-gradle-plugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
 ksp-gradle-plugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 [plugins]
@@ -71,6 +72,7 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 

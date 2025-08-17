@@ -10,7 +10,7 @@ import utils.libs
 class AndroidComposeConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            // Configure compose for either application or library
+            pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
             pluginManager.withPlugin("com.android.application") {
                 extensions.configure<BaseAppModuleExtension> {
                     configureCompose(this)
@@ -50,17 +50,14 @@ class AndroidComposeConventionPlugin : Plugin<Project> {
     }
 
     private fun Project.configureCompose(
-        commonExtension: CommonExtension<*, *, *, *, *>
+        commonExtension: CommonExtension<*, *, *, *, *, *>
     ) {
         commonExtension.apply {
             buildFeatures {
                 compose = true
             }
-
-            composeOptions {
-                kotlinCompilerExtensionVersion =
-                    libs.findVersion("compose.compiler").get().toString()
-            }
+            // With Kotlin 2.0+, composeOptions are no longer needed
+            // The Kotlin Compose Compiler plugin handles the compiler settings
         }
     }
-} 
+}

@@ -21,6 +21,11 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 
                 add("implementation", libs.findLibrary("androidx.navigation.compose").get())
                 add("implementation", libs.findLibrary("coil.compose").get())
+
+                // Testing dependencies
+                add("testImplementation", libs.findLibrary("junit").get())
+                add("androidTestImplementation", libs.findLibrary("androidx.test.ext").get())
+                add("androidTestImplementation", libs.findLibrary("androidx.test.espresso").get())
             }
         }
     }

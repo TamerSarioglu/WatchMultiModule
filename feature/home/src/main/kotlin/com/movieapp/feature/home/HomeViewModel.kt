@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.movieapp.core.domain.usecase.GetMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,43 +26,39 @@ class HomeViewModel @Inject constructor(
 
     private fun loadMovies() {
         viewModelScope.launch {
+            _state.update { it.copy(isLoading = true, error = null) }
+
             try {
-                _state.update { it.copy(isLoading = true, error = null) }
-                
-                // Launch parallel requests
-                val popularDeferred = viewModelScope.launch {
-                    try {
-                        val popularMovies = moviesUseCase.getPopularMovies(1)
-                        _state.update { it.copy(popularMovies = popularMovies) }
-                    } catch (e: Exception) {
-                        _state.update { it.copy(error = "Failed to load popular movies") }
-                    }
+                // Use async for parallel execution but with proper error handling
+                val popularDeferred = async {
+                    runCatching { moviesUseCase.getPopularMovies(1) }
+                }
+                val topRatedDeferred = async {
+                    runCatching { moviesUseCase.getTopRatedMovies(1) }
+                }
+                val nowPlayingDeferred = async {
+                    runCatching { moviesUseCase.getNowPlayingMovies(1) }
                 }
 
-                val topRatedDeferred = viewModelScope.launch {
-                    try {
-                        val topRatedMovies = moviesUseCase.getTopRatedMovies(1)
-                        _state.update { it.copy(topRatedMovies = topRatedMovies) }
-                    } catch (e: Exception) {
-                        _state.update { it.copy(error = "Failed to load top rated movies") }
-                    }
-                }
+                // Await all results
+                val popularResult = popularDeferred.await()
+                val topRatedResult = topRatedDeferred.await()
+                val nowPlayingResult = nowPlayingDeferred.await()
 
-                val nowPlayingDeferred = viewModelScope.launch {
-                    try {
-                        val nowPlayingMovies = moviesUseCase.getNowPlayingMovies(1)
-                        _state.update { it.copy(nowPlayingMovies = nowPlayingMovies) }
-                    } catch (e: Exception) {
-                        _state.update { it.copy(error = "Failed to load now playing movies") }
-                    }
+                // Update state based on results
+                _state.update { currentState ->
+                    currentState.copy(
+                        popularMovies = popularResult.getOrNull() ?: emptyList(),
+                        topRatedMovies = topRatedResult.getOrNull() ?: emptyList(),
+                        nowPlayingMovies = nowPlayingResult.getOrNull() ?: emptyList(),
+                        isLoading = false,
+                        error = getFirstErrorMessage(
+                            popularResult,
+                            topRatedResult,
+                            nowPlayingResult
+                        )
+                    )
                 }
-
-                // Wait for all requests to complete
-                popularDeferred.join()
-                topRatedDeferred.join()
-                nowPlayingDeferred.join()
-                
-                _state.update { it.copy(isLoading = false) }
             } catch (e: Exception) {
                 _state.update { 
                     it.copy(
@@ -71,6 +68,17 @@ class HomeViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    private fun getFirstErrorMessage(
+        popularResult: Result<*>,
+        topRatedResult: Result<*>,
+        nowPlayingResult: Result<*>
+    ): String? {
+        return listOf(popularResult, topRatedResult, nowPlayingResult)
+            .firstOrNull { it.isFailure }
+            ?.exceptionOrNull()
+            ?.localizedMessage
     }
 
     fun retryLoading() {
